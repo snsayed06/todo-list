@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "isCompleted": false,
+        "item": "carousel"
+    },
+    {
+        "id": 2,
+        "isCompleted": true,
+        "item": "database management"
+    },
+    {
+        "id": 3,
+        "isCompleted": false,
+        "item": "auto complete"
+    },
+    {
+        "id": 4,
+        "isCompleted": true,
+        "item": "pagination"
+    },
+    {
+        "id": 5,
+        "isCompleted": false,
+        "item": "debounce and throttle"
+    },
+    {
+        "id": 6,
+        "isCompleted": true,
+        "item": "todo list"
+    }
+]
