@@ -5,7 +5,7 @@ import Todo from "../src/Pages/Todo";
 import Home from "../src/Pages/Home";
 import PaginationPage from "../src/Pages/Pagination";
 import SearchPage from "../src/Pages/Search";
-
+import AccordionPage from "../src/Pages/Accordion";
 
 function App() {
   return (
@@ -25,6 +25,9 @@ function App() {
             <li>
               <Link to='/search'>Search</Link>
             </li>
+            <li>
+              <Link to='/accordion'>Accordion</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -33,6 +36,7 @@ function App() {
         <Route path='/todo' element={<Todo />} />
         <Route path='/pagination' element={<PaginationPage />} />
         <Route path='/search' element={<SearchPage />} />
+        <Route path='/accordion' element={<AccordionPage />} />
       </Routes>
     </div>
   );
