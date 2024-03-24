@@ -1,5 +1,13 @@
+import ClassicWoParams from "./ClassicWoParams";
+import WithParams from "./WithParams";
+
 const Pagination = () => {
-  return <div>from pagination</div>;
+  return (
+    <>
+      <ClassicWoParams />
+      <WithParams />
+    </>
+  );
 };
 
 export default Pagination;
