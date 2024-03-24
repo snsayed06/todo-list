@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Data from "../Data.json";
+import Data from "../../Data.json";
 import { AddList } from "./AddList";
 import { ItemsList } from "./ItemsList";
 

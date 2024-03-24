@@ -1,6 +1,6 @@
 import React from "react";
 import { Route,  Switch} from "react-router-dom";
-import TodoList from "../src/components/TodoList";
+import Todo from "../src/Pages/Todo";
 import Home from '../src/Pages/Home'
 
 const Routes = () => {
@@ -8,7 +8,7 @@ const Routes = () => {
     <div>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/todo' component={TodoList} />
+        <Route exact path='/todo' component={Todo} />
       </Switch>
     </div>
   );
