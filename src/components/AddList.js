@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const AddList = ({addHandler}) => {
+export const AddList = ({ addHandler }) => {
   const [value, setValue] = useState("");
 
   const handleInput = (e) => {

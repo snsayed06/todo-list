@@ -10,25 +10,25 @@ const Todo = () => {
     setTodoList([
       ...todoList,
       {
+        id: todoList.length + 1,
         isCompleted: false,
         item: value,
       },
     ]);
   };
 
-  const toggleHandler = (list) => {
+  const toggleHandler = (id) => {
     const data = todoList.map((todo) => {
-      if (list === todo.item) {
-        const object = { ...todo, isCompleted: !todo.isCompleted };
-        return object;
+      if (id === todo.id) {
+        return { ...todo, isCompleted: !todo.isCompleted };
       }
       return todo;
     });
     setTodoList([...data]);
   };
 
-  const deleteHandler = (todo) => {
-    const data = todoList.filter((list) => list.item !== todo);
+  const deleteHandler = (id) => {
+    const data = todoList.filter((list) => list.id !== id);
     setTodoList([...data]);
   };
 
