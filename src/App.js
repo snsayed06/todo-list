@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Todo from "../src/Pages/Todo";
 import Home from "../src/Pages/Home";
 import PaginationPage from "../src/Pages/Pagination";
+import SearchPage from "../src/Pages/Search";
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
             <li>
               <Link to='/pagination'>Pagination</Link>
             </li>
+            <li>
+              <Link to='/search'>Search</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -28,6 +32,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/todo' element={<Todo />} />
         <Route path='/pagination' element={<PaginationPage />} />
+        <Route path='/search' element={<SearchPage />} />
       </Routes>
     </div>
   );
