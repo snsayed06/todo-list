@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Todo from "../src/Pages/Todo";
 import Home from "../src/Pages/Home";
+import PaginationPage from "../src/Pages/Pagination";
+
 
 function App() {
   return (
@@ -16,12 +18,16 @@ function App() {
             <li>
               <Link to='/todo'>Todo</Link>
             </li>
+            <li>
+              <Link to='/pagination'>Pagination</Link>
+            </li>
           </ul>
         </nav>
       </header>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/todo' element={<Todo />} />
+        <Route path='/pagination' element={<PaginationPage />} />
       </Routes>
     </div>
   );
