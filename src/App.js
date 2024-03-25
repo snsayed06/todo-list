@@ -7,6 +7,7 @@ import PaginationPage from "../src/Pages/Pagination";
 import SearchPage from "../src/Pages/Search";
 import AccordionPage from "../src/Pages/Accordion";
 import CarouselPage from "../src/Pages/Carousel";
+import ProgressBarPage from "../src/Pages/ProgressBar";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
             <li>
               <Link to='/carousel'>Carousel</Link>
             </li>
+            <li>
+              <Link to='/progress'>Progress</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -42,6 +46,7 @@ function App() {
         <Route path='/search' element={<SearchPage />} />
         <Route path='/accordion' element={<AccordionPage />} />
         <Route path='/carousel' element={<CarouselPage />} />
+        <Route path='/progress' element={<ProgressBarPage />} />
       </Routes>
     </div>
   );
