@@ -8,6 +8,8 @@ import SearchPage from "../src/Pages/Search";
 import AccordionPage from "../src/Pages/Accordion";
 import CarouselPage from "../src/Pages/Carousel";
 import ProgressBarPage from "../src/Pages/ProgressBar";
+import HooksPage from "../src/Pages/Hooks";
+import LazyLoadPostsPage from "../src/Pages/LazyLoadPosts";
 
 function App() {
   return (
@@ -36,6 +38,12 @@ function App() {
             <li>
               <Link to='/progress'>Progress</Link>
             </li>
+            <li>
+              <Link to='/hooks'>Hooks</Link>
+            </li>
+            <li>
+              <Link to='/lazy'>Lazy-Load-Posts</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -47,6 +55,8 @@ function App() {
         <Route path='/accordion' element={<AccordionPage />} />
         <Route path='/carousel' element={<CarouselPage />} />
         <Route path='/progress' element={<ProgressBarPage />} />
+        <Route path='/hooks' element={<HooksPage />} />
+        <Route path='/lazy' element={<LazyLoadPostsPage />} />
       </Routes>
     </div>
   );
