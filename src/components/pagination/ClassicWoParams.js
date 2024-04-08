@@ -1,56 +1,59 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 const ClassicWoParams = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 10;
-
-  const fetchData = async () => {
-    const res = await axios("https://jsonplaceholder.typicode.com/posts");
-    setData(res.data);
-  };
+  const postsPerPage = 7;
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
     fetchData();
   }, []);
 
-  const prevHandler = () => {
-    if (currentPage !== 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
-
-  const nextHandler = () => {
-    if (currentPage < data.length / postsPerPage) {
-      setCurrentPage((prev) => prev + 1);
-    }
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
     <div>
-      <h1>Responses from Api and manually creating Pagination</h1>
-      {data &&
-        data
-          .slice(currentPage * postsPerPage - 10, currentPage * postsPerPage)
-          .map((data) => {
-            return (
-              <p key={data.id}>
-                {data.id} {data.title}
-              </p>
-            );
-          })}
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button onClick={prevHandler}>Prev</button>
-        {data &&
-          [...Array(data.length / postsPerPage)].map((_, index) => {
-            return (
-              <button onClick={() => setCurrentPage(index + 1)}>
-                {index + 1}
-              </button>
-            );
-          })}
-        <button onClick={nextHandler}>Next</button>
+      <h1>Responses from API with Pagination</h1>
+      {currentPosts.map((post) => (
+        <p key={post.id}>
+          {post.id} {post.title}
+        </p>
+      ))}
+      <div>
+        <button
+          onClick={() => handlePageClick(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Prev
+        </button>
+        {[...Array(Math.ceil(data.length / postsPerPage))].map((_, index) => (
+          <button key={index + 1} onClick={() => handlePageClick(index + 1)}>
+            {index + 1}
+          </button>
+        ))}
+        <button
+          onClick={() => handlePageClick(currentPage + 1)}
+          disabled={currentPage === Math.ceil(data.length / postsPerPage)}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
