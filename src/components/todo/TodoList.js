@@ -1,47 +1,81 @@
-import { useState } from "react";
-import Data from "../../Data.json";
-import { AddList } from "./AddList";
-import { ItemsList } from "./ItemsList";
+import React, { useState } from "react";
 
-const Todo = () => {
-  const [todoList, setTodoList] = useState(Data);
+const TodoList = () => {
+  const [list, setList] = useState([]);
+  const [input, setInput] = useState("");
+  const [edit, setEdit] = useState(false);
 
-  const addHandler = (value) => {
-    setTodoList([
-      ...todoList,
-      {
-        id: todoList.length + 1,
-        isCompleted: false,
-        item: value,
-      },
-    ]);
-  };
-
-  const toggleHandler = (id) => {
-    const data = todoList.map((todo) => {
-      if (id === todo.id) {
-        return { ...todo, isCompleted: !todo.isCompleted };
-      }
-      return todo;
-    });
-    setTodoList([...data]);
+  const addHandler = () => {
+    setList([...list, { todo: input, id: new Date(), isCompleted: false }]);
+    setInput("");
   };
 
   const deleteHandler = (id) => {
-    const data = todoList.filter((list) => list.id !== id);
-    setTodoList([...data]);
+    const filteredResult = list.filter((list) => list.id !== id);
+    setList([...filteredResult]);
+  };
+
+  const toggleHandler = (id) => {
+    const filteredResult = list.map((list) => {
+      if (id === list.id) {
+        return { ...list, isCompleted: !list.isCompleted };
+      }
+      return list;
+    });
+    setList([...filteredResult]);
+  };
+
+  const editHandler = (e, id) => {
+    const editResults = list.map((list) => {
+      if (list.id === id) {
+        return {
+          ...list,
+          todo: e.target.value,
+        };
+      }
+      return list;
+    });
+    setList([...editResults]);
   };
 
   return (
     <div>
-      <AddList addHandler={addHandler} />
-      <ItemsList
-        deleteHandler={deleteHandler}
-        toggleHandler={toggleHandler}
-        todo={todoList}
-      />
+      <div>
+        <input
+          type='text'
+          value={input}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+          placeholder='enter your todo list'
+        />
+        <button disabled={input.length === 0} onClick={addHandler}>
+          Add
+        </button>
+      </div>
+      {list.map((list, index) => {
+        return (
+          <p key={index}>
+            {edit ? (
+              <input
+                onChange={(e) => editHandler(e, list.id)}
+                value={list.todo}
+              />
+            ) : (
+              <span style={{ color: list.isCompleted ? "green" : "red" }}>
+                {list.todo}
+              </span>
+            )}
+            <button onClick={() => toggleHandler(list.id)}>Toggle</button>
+            <button onClick={() => deleteHandler(list.id)}>delete</button>
+            <button onClick={() => setEdit((prev) => !prev)}>
+              {edit ? "Save" : "Edit"}
+            </button>
+          </p>
+        );
+      })}
     </div>
   );
 };
 
-export default Todo;
+export default TodoList;
