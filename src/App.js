@@ -11,6 +11,7 @@ import ProgressBarPage from "../src/Pages/ProgressBar";
 import HooksPage from "../src/Pages/Hooks";
 import LazyLoadPostsPage from "../src/Pages/LazyLoadPosts";
 import Cart from "../src/Pages/Cart";
+import Scroll from "../src/Pages/InfiniteScroll";
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
             <li>
               <Link to='/cart'>Add to Cart</Link>
             </li>
+            <li>
+              <Link to='/scroll'>Infinite Scroll</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -62,6 +66,7 @@ function App() {
         <Route path='/hooks' element={<HooksPage />} />
         <Route path='/lazy' element={<LazyLoadPostsPage />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/scroll' element={<Scroll />} />
       </Routes>
     </div>
   );
