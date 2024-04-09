@@ -42,6 +42,7 @@ nav > ul {
   display: flex;
   justify-content: center;
   list-style: none;
+  flex-wrap: wrap;
   > li {
     margin: 0 12px;
   }
