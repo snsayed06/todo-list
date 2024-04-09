@@ -1,11 +1,8 @@
-import { useState } from "react";
-
-const Card = ({ title, body }) => {
-  const [folder, setFolded] = useState(false);
+const Card = ({ title, body, indexHandler, id, active }) => {
   return (
-    <div onClick={() => setFolded((prev) => !prev)}>
+    <div className='card' onClick={() => indexHandler(id)}>
       <p>{title}</p>
-      {folder && <p>{body}</p>}
+      {active === id && <p>{body}</p>}
     </div>
   );
 };
