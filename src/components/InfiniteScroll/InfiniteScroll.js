@@ -31,7 +31,6 @@
 //         window.innerHeight + document.documentElement.scrollTop ===
 //         document.documentElement.offsetHeight
 //       ) {
-//         console.log('inner', window.innerHeight, document.documentElement.scrollTop, document.documentElement.offsetHeight)
 //         fetchData();
 //       }
 //     }
@@ -92,7 +91,6 @@ const InfiniteScroll = () => {
 
   function onIntersection(entries) {
     const firstEntry = entries[0];
-    console.log('CB', firstEntry)
     if (firstEntry.isIntersecting && hasMore) {
       fetchMoreItems();
     }
@@ -100,9 +98,7 @@ const InfiniteScroll = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(onIntersection);
-    console.log('useEffect-1')
     if (observer && elementRef.current) {
-      console.log('useEffect-2')
       observer.observe(elementRef.current);
     }
 

@@ -12,6 +12,8 @@ import HooksPage from "../src/Pages/Hooks";
 import LazyLoadPostsPage from "../src/Pages/LazyLoadPosts";
 import Cart from "../src/Pages/Cart";
 import Scroll from "../src/Pages/InfiniteScroll";
+import Throttle from "../src/Pages/Debounce/Throttle";
+import AutoComplete from "../src/Pages/AutoComplete";
 
 function App() {
   return (
@@ -52,6 +54,12 @@ function App() {
             <li>
               <Link to='/scroll'>Infinite Scroll</Link>
             </li>
+            <li>
+              <Link to='/throttle'>Throttle</Link>
+            </li>
+            <li>
+              <Link to='/autocomplete'>AutoComplete</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -67,6 +75,8 @@ function App() {
         <Route path='/lazy' element={<LazyLoadPostsPage />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/scroll' element={<Scroll />} />
+        <Route path='/throttle' element={<Throttle />} />
+        <Route path='/autocomplete' element={<AutoComplete />} />
       </Routes>
     </div>
   );
