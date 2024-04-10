@@ -14,6 +14,7 @@ import Cart from "../src/Pages/Cart";
 import Scroll from "../src/Pages/InfiniteScroll";
 import Throttle from "../src/Pages/Debounce/Throttle";
 import AutoComplete from "../src/Pages/AutoComplete";
+import Practise from "../src/Pages/Practise";
 
 function App() {
   return (
@@ -60,6 +61,9 @@ function App() {
             <li>
               <Link to='/autocomplete'>AutoComplete</Link>
             </li>
+            <li>
+              <Link to='/practise'>Practise</Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -77,6 +81,7 @@ function App() {
         <Route path='/scroll' element={<Scroll />} />
         <Route path='/throttle' element={<Throttle />} />
         <Route path='/autocomplete' element={<AutoComplete />} />
+        <Route path='/practise' element={<Practise />} />
       </Routes>
     </div>
   );
