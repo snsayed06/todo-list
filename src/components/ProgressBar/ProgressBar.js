@@ -7,9 +7,12 @@ export default function App() {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    setInterval(() => {
+    const time = setInterval(() => {
       setValue((val) => val + 0.1);
     }, 20);
+    return ()=>{
+      clearInterval(time)
+    }
   }, []);
 
   return (
